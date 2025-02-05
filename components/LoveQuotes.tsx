@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import PostQuoteForm from './PostQuoteForm';
-import { Edit, Trash, ChevronDown } from 'lucide-react'; // Icons for edit, delete, and dropdown
+import { Edit, Trash, ChevronDown } from 'lucide-react';
 
 export default function LoveQuotes() {
   const [quotes, setQuotes] = useState<{ id: string; text: string; name: string; time: string }[]>([]);
@@ -56,9 +56,9 @@ export default function LoveQuotes() {
     : quotes;
 
   return (
-    <div className="bg-gradient-to-br from-pink-100 to-purple-100 p-6 rounded-lg shadow-lg border-radius-10px; border-color-#222">
-      <div className="flex items-center justify-between mb-4 border-radius: 10px;">
-        <h2 className="text-2xl font-bold text-pink-600">Love Quotes</h2>
+    <div className="bg-gradient-to-br from-pink-100 to-purple-100 p-6 rounded-lg shadow-lg">
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="text-2xl font-bold text-pink-600">Special Love Quotes</h2>
         <div className="relative">
           <button
             onClick={() => setShowDateFilter(!showDateFilter)}
@@ -86,11 +86,11 @@ export default function LoveQuotes() {
         </div>
       </div>
       {/* Scrollable Container for Quotes */}
-      <div className="max-h-36 overflow-y-auto"> {/* Fixed height and scrollable */}
+      <div className="max-h-96 overflow-y-auto">
         {filteredQuotes.slice(0, 5).map((quote) => (
           <div key={quote.id} className="bg-white p-4 rounded-lg shadow mb-4">
             <div className="flex justify-between items-center">
-              <p className="text-pink-800">"{quote.text}"</p>
+              <p className="text-pink-800">&quot;{quote.text}&quot;</p>
               <div className="flex gap-2">
                 <button
                   onClick={() => setEditQuote({ id: quote.id, text: quote.text, name: quote.name })}
