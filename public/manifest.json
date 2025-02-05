@@ -1,0 +1,20 @@
+{
+    "name": "Love Journal",
+    "short_name": "LoveJournal",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#FFB6C1",
+    "theme_color": "#FF69B4",
+    "icons": [
+      {
+        "src": "/icon-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/icon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
