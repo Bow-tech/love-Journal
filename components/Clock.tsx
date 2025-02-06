@@ -9,7 +9,8 @@ const Clock = () => {
   
     const ctx = canvas.getContext('2d');
     if (!ctx) {
-      throw new Error('2D context not supported or canvas already initialized with another context type.');
+      console.error('2D context not supported or canvas already initialized with another context type.');
+      return;
     }
   
     const radius = canvas.height / 2;
@@ -66,6 +67,7 @@ const Clock = () => {
   
     return () => clearInterval(interval); // Cleanup interval on unmount
   }, []);
+  
   
 
   return (
