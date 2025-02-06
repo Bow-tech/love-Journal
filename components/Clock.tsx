@@ -15,7 +15,7 @@ const Clock = () => {
 
     function drawClock() {
       const now = new Date();
-      if (ctx) {
+      if (ctx && canvas) {
         ctx.clearRect(-radius, -radius, canvas.width, canvas.height);
 
         // Draw clock face
