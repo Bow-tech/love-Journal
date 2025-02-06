@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image'; // Use next/image
 import Clock from '../components/Clock';
 import BirthdayButton from '../components/BirthdayButton';

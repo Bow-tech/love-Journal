@@ -121,8 +121,11 @@ export default function LoveQuotes() {
       </button>
       {showForm && (
         <PostQuoteForm
-          onSubmit={handleSubmit}
-          onClose={() => setShowForm(false)}
+          onSubmit={editQuote ? handleEdit : handleSubmit} // Use handleEdit if editing
+          onClose={() => {
+            setShowForm(false);
+            setEditQuote(null); // Reset editQuote when closing the form
+          }}
           initialText={editQuote?.text || ''}
           initialName={editQuote?.name || ''}
         />
