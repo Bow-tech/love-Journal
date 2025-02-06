@@ -48,7 +48,7 @@ const Clock = () => {
       }
     }
 
-    function drawHand(angle, length, width, color) {
+    function drawHand(angle: number, length: number, width: number, color: string) {
       if (ctx) {
         ctx.beginPath();
         ctx.lineWidth = width;
