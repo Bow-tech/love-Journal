@@ -6,17 +6,19 @@ const Clock = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
+  
+    const ctx = canvas.getContext('2d');
+    if (!ctx) {
+      throw new Error('2D context not supported or canvas already initialized with another context type.');
+    }
+  
     const radius = canvas.height / 2;
     ctx.translate(radius, radius);
-
+  
     function drawClock() {
       const now = new Date();
       ctx.clearRect(-radius, -radius, canvas.width, canvas.height);
-
+  
       // Draw clock face
       ctx.beginPath();
       ctx.arc(0, 0, radius * 0.9, 0, 2 * Math.PI);
@@ -24,7 +26,7 @@ const Clock = () => {
       ctx.shadowBlur = 15;
       ctx.shadowColor = "#EE66A6";
       ctx.fill();
-
+  
       // Draw numbers
       ctx.font = "18px Arial";
       ctx.fillStyle = "#FFEB55";
@@ -36,7 +38,7 @@ const Clock = () => {
           -Math.cos(ang) * radius * 0.8
         );
       }
-
+  
       // Draw clock hands
       const second = now.getSeconds();
       const minute = now.getMinutes();
@@ -45,7 +47,7 @@ const Clock = () => {
       drawHand(minute * 6, radius * 0.8, 6, "#EE66A6");
       drawHand(second * 6, radius * 0.9, 2, "#D91656");
     }
-
+  
     function drawHand(angle, length, width, color) {
       ctx.beginPath();
       ctx.lineWidth = width;
@@ -57,13 +59,14 @@ const Clock = () => {
       ctx.stroke();
       ctx.rotate(-(Math.PI / 180) * angle);
     }
-
+  
     // Start clock drawing
     drawClock();
     const interval = setInterval(drawClock, 1000);
-
+  
     return () => clearInterval(interval); // Cleanup interval on unmount
   }, []);
+  
 
   return (
     <canvas
