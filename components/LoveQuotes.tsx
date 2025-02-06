@@ -1,8 +1,11 @@
+// Import necessary modules
 import { useState, useEffect } from 'react';
 import PostQuoteForm from './PostQuoteForm';
 import { Edit, Trash, ChevronDown } from 'lucide-react';
 
+// Export default function for LoveQuotes component
 export default function LoveQuotes() {
+  // Define state variables
   const [quotes, setQuotes] = useState<{ id: string; text: string; name: string; time: string }[]>([]);
   const [showForm, setShowForm] = useState(false);
   const [editQuote, setEditQuote] = useState<{ id: string; text: string; name: string } | null>(null);
@@ -21,24 +24,25 @@ export default function LoveQuotes() {
   }, [quotes]);
 
   // Handle quote submission
-  const handleSubmit = (text: string, name: string) => {
-    const newQuote = {
-      id: Math.random().toString(36).substring(7),
-      text,
-      name,
-      time: new Date().toLocaleTimeString(),
-    };
-    setQuotes([newQuote, ...quotes]);
-    setShowForm(false);
-  };
-
-  // Handle quote edit
-  const handleEdit = (id: string, text: string, name: string) => {
-    const updatedQuotes = quotes.map((quote) =>
-      quote.id === id ? { ...quote, text, name } : quote
-    );
-    setQuotes(updatedQuotes);
-    setEditQuote(null);
+  const handleSubmit = (text: string, name: string, id?: string) => {
+    if (id) {
+      // Edit existing quote
+      const updatedQuotes = quotes.map((quote) =>
+        quote.id === id ? { ...quote, text, name } : quote
+      );
+      setQuotes(updatedQuotes);
+      setEditQuote(null);
+    } else {
+      // Add new quote
+      const newQuote = {
+        id: Math.random().toString(36).substring(7),
+        text,
+        name,
+        time: new Date().toLocaleTimeString(),
+      };
+      setQuotes([newQuote, ...quotes]);
+      setShowForm(false);
+    }
   };
 
   // Handle quote deletion
@@ -121,7 +125,7 @@ export default function LoveQuotes() {
       </button>
       {showForm && (
         <PostQuoteForm
-          onSubmit={editQuote ? handleEdit : handleSubmit} // Use handleEdit if editing
+          onSubmit={(text: string, name: string) => handleSubmit(text, name, editQuote?.id)} // Use handleSubmit for both new and edited quotes
           onClose={() => {
             setShowForm(false);
             setEditQuote(null); // Reset editQuote when closing the form
