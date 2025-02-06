@@ -35,10 +35,11 @@ export default function Home() {
           {showBirthdayMessage && (
             <>
               <div className="bg-gradient-to-br from-pink-500 to-purple-600 p-6 rounded-lg shadow-lg text-white mb-8">
-                <p className="text-xl font-bold">Happy Birthday, my love! 🎉❤️</p>
-                <p className="mt-2"> even though we're miles apart, you're always close in my heart. You’re the most precious gift I’ve ever received 🎁✨. I may not have many gifts now, but I offer you my endless love and warmest wishes. I pray you find your dream job 💼🌟 and that soon we can be together again 🤗❤️.
+              <p className="text-xl font-bold">Happy Birthday, my love! 🎉❤️</p>
+<p className="mt-2"> even though we&apos;re miles apart, you&apos;re always close in my heart. You&apos;re the most precious gift I&apos;ve ever received 🎁✨. I may not have many gifts now, but I offer you my endless love and warmest wishes. I pray you find your dream job 💼🌟 and that soon we can be together again 🤗❤️.
 
 I love you always, 💖</p>
+
               </div>
               <CountdownTimer />
             </>
