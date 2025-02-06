@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
-const Clock = () => {
+const Clock: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
